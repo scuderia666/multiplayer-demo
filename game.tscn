@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnug8oni8npjd"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_miuqw"]
+
+[node name="game" type="Node"]
+script = ExtResource("1_miuqw")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="players" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="camera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/camera"]
+
+[node name="map" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, -1)
+use_collision = true
+size = Vector3(16, 1, 17)
+
+[node name="hud" type="CanvasLayer" parent="."]
+
+[node name="chatbox" type="RichTextLabel" parent="hud"]
+offset_top = 240.0
+offset_right = 216.0
+offset_bottom = 440.0
+
+[node name="messagebox" type="LineEdit" parent="hud"]
+offset_top = 440.0
+offset_right = 216.0
+offset_bottom = 472.0
